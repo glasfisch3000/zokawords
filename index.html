@@ -6,13 +6,28 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body>
-    <div class="header">
+    <div class="block header">
       <h1 class="title">
         ZokaWords
+        <div class="version">
+          Version 1.0
+        </div>
       </h1>
-      <div class="version">
-        1.0
-      </div>
+
+      <label for="wordType">Generate:</label>
+      <select name="wordType" id="wordType">
+        <option value="noun">Nouns</option>
+        <option value="verb">Verbs</option>
+        <option value="adjective">Adjectives</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="syllables">Syllables:</label>
+      <input type="number" id="syllables" name="syllables" min="1" max="5">
+    </div>
+
+    <div class="block">
+
     </div>
   </body>
 </html>
