@@ -7,6 +7,7 @@ body {
 
 .block {
   margin: 15px;
+  top: 0px;
   bottom: 0px;
 
   border-radius: 12px;
@@ -20,12 +21,36 @@ body {
 }
 
 .title {
-
+  margin: 0px;
+  margin-bottom: 15px;
 }
 
 .version {
   font-size: 12pt;
   color: #bbb;
+}
+
+.input {
+  margin-top: 8px;
+}
+
+select, input[type=number] {
+  min-width: 50px;
+
+  padding: 3px;
+  padding-left: 4px;
+  padding-right: 3px;
+
+  border: 1px solid #888;
+  border-radius: 5px;
+
+  background: none;
+  color: inherit;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
 }
 
 .content {
@@ -34,10 +59,18 @@ body {
   padding-right: 30px;
   padding-top: 15px;
   padding-bottom: 15px;
+  min-height: 264px;
+}
+
+.word-container {
+  font-size: 50px;
+  text-align: center;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
 .word {
-  font-size: 50pt;
-  padding-top: 15px auto;
-  padding-bottom: 15px auto;
+  margin-left: auto;
+  margin-right: auto;
 }
