@@ -9,7 +9,10 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+
   border-radius: 15px;
+  border: 1px solid #888;
+
   padding: 15px;
 }
 
@@ -18,10 +21,24 @@ body {
 }
 
 .title {
-  
+
 }
 
 .version {
   font-size: 12pt;
   color: #bbb;
+}
+
+.content {
+  background-color: #222;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.word {
+  font-size: 50pt;
+  padding-top: 15px auto;
+  padding-bottom: 15px auto;
 }

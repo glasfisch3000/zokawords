@@ -14,20 +14,26 @@
         </div>
       </h1>
 
-      <label for="wordType">Generate:</label>
-      <select name="wordType" id="wordType">
-        <option value="noun">Nouns</option>
-        <option value="verb">Verbs</option>
-        <option value="adjective">Adjectives</option>
-        <option value="other">Other</option>
-      </select>
+      <p>
+        <label for="wordType">Generate:</label>
+        <select name="wordType" id="wordType">
+          <option value="noun">Nouns</option>
+          <option value="verb">Verbs</option>
+          <option value="adjective">Adjectives</option>
+          <option value="other">Other</option>
+        </select>
+      </p>
 
-      <label for="syllables">Syllables:</label>
-      <input type="number" id="syllables" name="syllables" min="1" max="5">
+      <p>
+        <label for="syllables">Syllables:</label>
+        <input type="number" id="syllables" name="syllables" min="1" max="5">
+      </p>
     </div>
 
-    <div class="block">
-
+    <div class="block content">
+      <div class="word" id="word-1"></div>
+      <div class="word" id="word-2"></div>
+      <div class="word" id="word-3"></div>
     </div>
   </body>
 </html>
