@@ -1,0 +1,22 @@
+body {
+  background-color: #222;
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  color: #eee;
+}
+
+.header {
+  margin-left: 0px;
+  margin-right: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #555;
+}
+
+.title {
+  margin-right: auto;
+}
+
+.version {
+  font-size: 12pt;
+  color: #bbb;
+}
