@@ -28,80 +28,115 @@ document.body.onresize = () => {
 
 document.body.onresize()
 
-word1.innerHTML = newWord()
-word2.innerHTML = newWord()
-word3.innerHTML = newWord()
+wordsPanel.onclick = () => {
+  word1.innerHTML = newWord(3)
+  word2.innerHTML = newWord(2)
+  word3.innerHTML = newWord(1)
+}
+wordType.onchange = wordsPanel.onclick
+syllableCount.onchange = wordsPanel.onclick
 
-function newWord() {
+wordsPanel.onclick()
+
+word1.onclick = (event) => {
+  event.stopPropagation()
+}
+word2.onclick = word1.onclick
+word3.onclick = word1.onclick
+
+function newWord(simplicity) {
   let syllables = syllableCount.value
 
   if(wordType.value == "noun") {
     var string = ""
-    for(var i = syllables; i>0; i--) {
-      string += newConsonant(i==syllables) // consonant is optional only at the beginning
+    var lastCoda = null
+
+    for(var i = syllables; i>1; i--) {
+      string += newConsonant(i==syllables ? simplicity : null, lastCoda ? [lastCoda] : null) // consonant is optional only at the beginning
       string += newVowel()
-      string += newCoda(true)
+
+      lastCoda = newCoda(simplicity)
+      string += lastCoda
     }
 
-    string += newConsonant()
+    string += newConsonant(null, lastCoda ? [lastCoda] : null)
     string += "a"
 
     return string
   } else if(wordType.value == "verb") {
     var string = ""
-    for(var i = syllables; i>0; i--) {
-      string += newConsonant()
+    var lastCoda = null
+
+    for(var i = syllables; i>1; i--) {
+      string += newConsonant(null, lastCoda ? [lastCoda] : null)
       string += newVowel()
-      string += newCoda(true)
+
+      lastCoda = newCoda(simplicity)
+      string += lastCoda
     }
 
-    string += newConsonant()
+    string += newConsonant(null, lastCoda ? [lastCoda] : null)
     string += "i"
 
     return string
   } else if(wordType.value == "adjective") {
     var string = ""
-    for(var i = syllables; i>0; i--) {
-      string += newConsonant(i==syllables) // consonant is optional only at the beginning
+    var lastCoda = null
+
+    for(var i = syllables; i>1; i--) {
+      string += newConsonant(i==syllables ? simplicity : null, lastCoda ? [lastCoda] : null) // consonant is optional only at the beginning
       string += newVowel()
-      string += newCoda(true)
+
+      lastCoda = newCoda(simplicity)
+      string += lastCoda
     }
 
-    string += newConsonant()
+    string += newConsonant(null, lastCoda ? [lastCoda] : null)
     string += "u"
 
     return string
   } else {
     var string = ""
-    string += newConsonant(true)
+
+    string += newConsonant(simplicity)
     string += newVowel()
 
-    for(var i = syllables; i>0; i--) {
-      string += newCoda(true)
-      string += newConsonant()
+    for(var i = syllables; i>1; i--) {
+      let coda = newCoda(simplicity)
+      string += coda
+      string += newConsonant(null, coda ? [coda] : null)
       string += newVowel()
     }
 
-    string += newConsonant()
+    string += newConsonant(0, ["y"])
 
     return string
   }
 }
 
-function newConsonant(optional) {
-  var array = ["v", "b", "m", "n", "z", "d", "zh", "dh", "l", "y", "k", "r"]
-  if(optional) array.push("")
+function newConsonant(simplicity, forbidden) {
+  var array = ["v", "b", "m", "n", "z", "d", "zh", "dh", "l", "k", "r"]
+  if(forbidden) for(let item of forbidden) array.splice(array.indexOf(item), 1)
+
+  if(simplicity==1) for(var i = 0; i<1; i++) array.push("")
+  if(simplicity==2) for(var i = 0; i<5; i++) array.push("")
+  if(simplicity==3) for(var i = 0; i<11; i++) array.push("")
+
   return array.random()
 }
 
-function newVowel(optional) {
+function newVowel() {
   var array = ["a", "e", "i", "o", "u"]
-  if(optional) array.push("")
   return array.random()
 }
 
-function newCoda(optional) {
+function newCoda(simplicity) {
   var array = ["m", "n", "l", "r"]
-  if(optional) for(var i = 0; i<5; i++) array.push("")
+  for(var i = 0; i<8; i++) array.push(array[i])
+
+  if(simplicity==1) for(var i = 0; i<1; i++) array.push("")
+  if(simplicity==2) for(var i = 0; i<8; i++) array.push("")
+  if(simplicity==3) return ""
+
   return array.random()
 }
